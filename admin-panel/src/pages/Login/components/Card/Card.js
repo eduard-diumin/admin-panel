@@ -8,9 +8,9 @@ function Card() {
   return (
     <div className='login__card'>
         <img className='logo' src={logo} alt="logo" width="240px" />
-        <Input placeholder={'User Name'}/>
-        <Input placeholder={'Password'} showIcon={true}/>
-        <Button btnGreen={true}>Login</Button>
+        <Input placeholder='User Name'/>
+        <Input placeholder='Password' showIcon={true}/>
+        <Button className='btn btn-green'>Login</Button>
     </div>
   )
 }
