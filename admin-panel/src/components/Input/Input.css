@@ -1,0 +1,21 @@
+.label-input {
+    display: flex;
+    align-items: center;
+    width: 277px;
+    height: 56px;
+    padding: 0 16px;
+    color: rgb(68, 178, 111);
+    background: rgb(217, 217, 217);
+}
+
+.label-input input {
+    border: 0;
+    flex: 1 1 100%;
+    background: rgb(217, 217, 217);
+}
+
+.label-input input::placeholder {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(68, 178, 111);
+}
