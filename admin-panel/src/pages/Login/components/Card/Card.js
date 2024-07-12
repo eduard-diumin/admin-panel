@@ -51,7 +51,7 @@ const Card = () => {
       console.log("Token received and stored:", token);
     } catch (error) {
       if (error.response.status === 404) {
-        setAuthError('Invalid user');
+        setAuthError('Invalid login or password');
       } else {
         setAuthError('Authentication error'); 
       }
