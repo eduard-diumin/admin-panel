@@ -1,8 +1,8 @@
 import React from 'react';
 import './Button.css'
 
-function Button({children, btnGreen}) {
-    const className = btnGreen ? 'btn btn-green' : 'btn'
+function Button({children, className}) {
+
   return (
     <button className={className}>
         {children}
