@@ -1,0 +1,14 @@
+.products__preview {
+    padding: 20px 29px;
+    min-height: 100dvh;
+    background: rgb(5, 188, 82);
+}
+
+.products__wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 32px 165px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 62px 0;
+}

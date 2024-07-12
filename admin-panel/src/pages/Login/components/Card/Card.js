@@ -4,12 +4,12 @@ import './Card.css';
 import Input from '../../../../components/Input/Input';
 import Button from '../../../../components/Button/Button';
 
-function Card() {
+const Card = () => {
   return (
     <div className='login__card'>
         <img className='logo' src={logo} alt="logo" width="240px" />
         <Input placeholder='User Name'/>
-        <Input placeholder='Password' showIcon={true}/>
+        <Input placeholder='Password' showIcon/>
         <Button className='btn btn-green'>Login</Button>
     </div>
   )

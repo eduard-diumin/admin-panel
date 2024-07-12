@@ -20,13 +20,11 @@ function Tabel({ data }) {
         </th>
         <th>
           <span>
-            {" "}
             Name <BiSortAlt2 />
           </span>
         </th>
         <th>
           <span>
-            {" "}
             Quantity <BiSortAlt2 />
           </span>
         </th>

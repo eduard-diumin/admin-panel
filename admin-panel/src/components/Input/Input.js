@@ -1,14 +1,27 @@
-import React from 'react';
-import { IoMdEye } from 'react-icons/io';
-import './Input.css';
+import React, { useState } from "react";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import "./Input.css";
 
-function Input({showIcon, placeholder}) {
+const Input = ({ showIcon, type, placeholder }) => {
+  const [inputType, setInputType] = useState(type);
+  const handleClick = () => {
+    setInputType((prevType) => (prevType === "password" ? "text" : "password"));
+  };
+
   return (
-    <label className='label-input'>
-        <input type="text" placeholder={placeholder} />
-        {showIcon && <IoMdEye size="34px" color='green'/> }
+    <label className="label-input">
+      <input type={inputType} placeholder={placeholder} />
+      {showIcon && (
+        <span onClick={handleClick} style={{ cursor: "pointer" }}>
+          {inputType === "password" ? (
+            <IoMdEye size="34px" color="green" />
+          ) : (
+            <IoMdEyeOff size="34px" color="green" />
+          )}
+        </span>
+      )}
     </label>
-  )
-}
+  );
+};
 
 export default Input;
