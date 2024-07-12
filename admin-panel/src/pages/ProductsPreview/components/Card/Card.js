@@ -3,13 +3,13 @@ import { BsCart4 } from "react-icons/bs";
 
 import "./Card.css";
 
-const Card = (props) => (
-  <div key={props.id} className="product__card">
-    <img src={props.image} alt="img" />
-    <h4 className="product__card-title">{props.name}</h4>
+const Card = ({image, name, price, quantity, id }) => (
+  <div  className="product__card">
+    <img src={image} alt="img" />
+    <h4 className="product__card-title">{name}</h4>
     <div className="product__card-block">
-      <span>{props.price} ₴</span>
-      <span>Кількість: {props.quantity}</span>
+      <span>{price} ₴</span>
+      <span>Кількість: {quantity}</span>
     </div>
     <button className="product__card-btn">
       <BsCart4 />

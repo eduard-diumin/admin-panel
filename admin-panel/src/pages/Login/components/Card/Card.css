@@ -15,6 +15,12 @@
     margin-top: 36px;
 }
 
-.login__card .label-input:first-of-type {
+.login__card .input-field:first-of-type {
     margin-bottom: 46px;
+}
+
+.error.auth-error {
+    position: initial;
+    margin-top: 10px;
+    display: block;
 }

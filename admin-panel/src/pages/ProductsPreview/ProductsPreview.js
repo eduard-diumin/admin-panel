@@ -69,7 +69,7 @@ const ProductsPreview =() => {
       </a>
       <div className="products__wrapper">
         {data.map((product) => (
-          <Card {...product} />
+          <Card key={product.id} {...product} />
         ))}
       </div>
     </div>

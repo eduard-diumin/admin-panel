@@ -28,3 +28,14 @@
     font-weight: 600;
     color: rgb(68, 178, 111);
 }
+
+.error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #ff0000;
+}
+
+.input-field {
+    position: relative;
+}
