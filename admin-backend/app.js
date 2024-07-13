@@ -30,23 +30,21 @@ app.use(cors({
   credentials: true // Если нужно передавать куки и другие учётные данные
 }));
 
-app.post('/api/auth', (req, res) => {
-  for (let user of users) {
-      if (
-          req.body.login === user.login &&
-          req.body.password === user.password
-      ) {
-          return res.status(200).json({
-              id: user.id,
-              login: user.login,
-              token: jwt.sign({ id: user.id }, tokenKey),
-          });
-      }
+app.post("/api/auth", (req, res) => {
+  const user = users.find(
+    (user) =>
+      req.body.login === user.login && req.body.password === user.password
+  );
+
+  if (user) {
+    return res.status(200).json({
+      id: user.id,
+      login: user.login,
+      token: jwt.sign({ id: user.id }, tokenKey),
+    });
   }
 
-  return res
-      .status(404)
-      .json({ message: 'User not found' });
+  return res.status(404).json({ message: "User not found" });
 });
 
 app.use('/', indexRouter);

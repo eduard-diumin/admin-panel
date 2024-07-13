@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/logo-white.svg";
 import Tabel from "./components/Tabel/Tabel";
 
@@ -6,11 +6,17 @@ import "./Products.css";
 import Buttons from "./components/Buttons/Buttons";
 
 function Products() {
-  const data = [
-    { id: 0, category: "PC", name: "Lenovo Y50-70", quantity: 5, price: '25,000.00' },
-    { id: 1, category: "Clothes", name: "Nike M Nk Df Acd21", quantity: 22, price: '4,000.00' },
-    { id: 2, category: "Plumbing", name: "CERSANIT MITO 17", quantity: 1337, price: '5,000.00' },
-  ];
+  const [ data, setData ] = useState(null);
+
+  useEffect(() => {
+    fetch("https://667dacdf297972455f6601f8.mockapi.io/products")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+
+    return () => {
+      console.log("Clean effect");
+    };
+  }, []);
 
   return (
     <div className="products">
