@@ -1,7 +1,6 @@
 .login-page {
     display: grid;
     place-items: center;
-    height: 100dvh;
+    min-height: 100dvh;
     background-color: rgb(68, 178, 111);
-    
 }

@@ -8,37 +8,37 @@ function Tabel({ data }) {
   return (
     <table className="tabel">
       <thead>
-        <th>
-          <span>
-            ID <BiSortAlt2 />
-          </span>
-        </th>
-        <th>
-          <span>
-            Category <BiSortAlt2 />
-          </span>
-        </th>
-        <th>
-          <span>
-            {" "}
-            Name <BiSortAlt2 />
-          </span>
-        </th>
-        <th>
-          <span>
-            {" "}
-            Quantity <BiSortAlt2 />
-          </span>
-        </th>
-        <th>
-          <span>
-            Price (₴) <BiSortAlt2 />
-          </span>
-        </th>
-        <th></th>
+        <tr>
+          <th>
+            <span>
+              ID <BiSortAlt2 />
+            </span>
+          </th>
+          <th>
+            <span>
+              Category <BiSortAlt2 />
+            </span>
+          </th>
+          <th>
+            <span>
+              Name <BiSortAlt2 />
+            </span>
+          </th>
+          <th>
+            <span>
+              Quantity <BiSortAlt2 />
+            </span>
+          </th>
+          <th>
+            <span>
+              Price (₴) <BiSortAlt2 />
+            </span>
+          </th>
+          <th></th>
+        </tr>
       </thead>
       <tbody>
-        {data.map((row) => (
+        {data?.map((row) => (
           <tr key={row.id}>
             <td>{row.id}</td>
             <td>{row.category}</td>

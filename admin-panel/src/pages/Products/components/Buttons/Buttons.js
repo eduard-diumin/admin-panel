@@ -4,8 +4,7 @@ import { LuPlus } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa6";
 import './Buttons.css'
 
-function Buttons() {
-  return (
+const Buttons = () => (
     <div className="btn-group">
       <Button className="btn btn-white">
         <FaRegUser style={{fontSize: "25px"}} />
@@ -16,7 +15,6 @@ function Buttons() {
         Add product
       </Button>
     </div>
-  );
-}
+)
 
 export default Buttons;

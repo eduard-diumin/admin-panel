@@ -3,7 +3,6 @@
     align-items: center;
     width: 277px;
     height: 56px;
-    padding: 0 16px;
     color: rgb(68, 178, 111);
     background: rgb(217, 217, 217);
 }
@@ -11,11 +10,32 @@
 .label-input input {
     border: 0;
     flex: 1 1 100%;
+    height: 100%;
+    padding: 0 16px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(68, 178, 111);
     background: rgb(217, 217, 217);
+}
+
+.label-input svg {
+    margin-right: 16px;
 }
 
 .label-input input::placeholder {
     font-size: 14px;
     font-weight: 600;
     color: rgb(68, 178, 111);
+}
+
+.error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #ff0000;
+}
+
+.input-field {
+    position: relative;
 }
