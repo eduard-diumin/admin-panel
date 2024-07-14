@@ -4,6 +4,7 @@ import logo from "../../../../assets/logo-green.svg";
 import "./Card.css";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Card = () => {
   });
   const [errors, setErrors] = useState({});
   const [authError, setAuthError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +30,6 @@ const Card = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     let formIsValid = true;
     let newErrors = {};
 
@@ -45,10 +46,11 @@ const Card = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5032/api/auth", formData); // Замените на ваш URL
+      const response = await axios.post("http://localhost:5032/api/auth", formData);
       const { token } = response.data;
       localStorage.setItem("token", token);
       console.log("Token received and stored:", token);
+      navigate('/products-tabel')
     } catch (error) {
       if (error.response.status === 404) {
         setAuthError('Invalid login or password');
