@@ -3,28 +3,30 @@ import logo from "../../assets/logo-white.svg";
 import Card from "./components/Card/Card";
 
 import './ProductsPreview.css';
+import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../../constants/constant";
 
 const ProductsPreview =() => {
   const [data, setData] = useState(null);
 
   useEffect(()=> {
-    fetch('https://667dacdf297972455f6601f8.mockapi.io/products')
+    fetch(API_BASE_URL)
         .then(response => response.json())
         .then(data => setData(data));
-
-    return () => {
-        console.log('Clean effect');
-    };
   }, []);
 
   return (
     <div className="products__preview">
-      <a href="http://">
-        <img src={logo} alt="logo" />
-      </a>
+      <img src={logo} alt="logo" />
       <div className="products__wrapper">
         {data?.map((product) => (
-          <Card key={product.id} {...product} />
+          <Link
+            className="product__link"
+            key={product.id}
+            to={`/products-preview/${product.id}`}
+          >
+            <Card {...product} />
+          </Link>
         ))}
       </div>
     </div>
