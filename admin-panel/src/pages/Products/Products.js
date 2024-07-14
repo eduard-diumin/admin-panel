@@ -30,7 +30,7 @@ function Products() {
       </a>
       <Buttons />
       <h1>Products</h1>
-      <Tabel data={data} />
+      <Tabel data={data} setData={setData} />
     </div>
   );
 }
