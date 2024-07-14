@@ -9,3 +9,13 @@
     font-size: 64px;
     color: #fff;
 }
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 31px;
+}
+
+.btn-group a{
+    text-decoration: none;
+}

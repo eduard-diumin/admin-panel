@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { BiSortAlt2 } from "react-icons/bi";
 import { MdEdit } from "react-icons/md";
 import { IoTrashBin } from "react-icons/io5";
-import {API_BASE_URL} from '../../../../constants/constant'
+import { API_BASE_URL } from "../../../../constants/constant";
 import "./Tabel.css";
 import DeleteProductModal from "../Modal/DeleteProductModal";
 import axios from "axios";
 
-function Tabel({ data, setData }) {
+function Tabel({ data, setData, handleClickOpenEdit  }) {
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
   const [error, setError] = useState(null);
@@ -25,17 +25,20 @@ function Tabel({ data, setData }) {
   const handleConfirm = async () => {
     try {
       await axios.delete(`${API_BASE_URL}/${selectedRow.id}`);
-      setData((prevData) => prevData.filter(product => product.id !== selectedRow.id));
+      setData((prevData) =>
+        prevData.filter((product) => product.id !== selectedRow.id)
+      );
       handleClose();
     } catch (error) {
-      console.error('Error deleting row:', error);
-      setError('Failed to delete the product.');
+      console.error("Error deleting row:", error);
+      setError("Failed to delete the product.");
     }
     handleClose();
   };
+
   return (
     <>
-    {error && <div>Error: {error}</div>}
+      {error && <div>Error: {error}</div>}
       <table className="tabel">
         <thead>
           <tr>
@@ -82,8 +85,12 @@ function Tabel({ data, setData }) {
                     marginRight: "10px",
                     fontSize: "20px",
                   }}
+                  onClick={() => handleClickOpenEdit(row)}
                 />
-                <IoTrashBin onClick={() => handleClickOpen(row)} style={{ cursor: "pointer", fontSize: "20px" }} />
+                <IoTrashBin
+                  onClick={() => handleClickOpen(row)}
+                  style={{ cursor: "pointer", fontSize: "20px" }}
+                />
               </td>
             </tr>
           ))}
@@ -93,7 +100,6 @@ function Tabel({ data, setData }) {
         open={open}
         handleClose={handleClose}
         handleConfirm={handleConfirm}
-        title="Confirm Delete"
         description="Are u sure you want to delete this product?"
       />
     </>
