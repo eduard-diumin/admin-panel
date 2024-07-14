@@ -35,6 +35,8 @@ const ModalEdit = ({
     description: ""
   });
 
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
     if (selectedProduct) {
       setFormData(selectedProduct);
@@ -47,18 +49,37 @@ const ModalEdit = ({
         description: ""
       });
     }
+    setErrors({});
   }, [selectedProduct]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
+    }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: ""
     }));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.category) newErrors.category = "This field is required";
+    if (!formData.name) newErrors.name = "This field is required";
+    if (!formData.quantity) newErrors.quantity = "This field is required";
+    if (!formData.price) newErrors.price = "This field is required";
+    return newErrors;
+  };
+
   const handleSubmit = () => {
-    handleSave(formData);
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length === 0) {
+      handleSave(formData);
+    } else {
+      setErrors(newErrors);
+    }
   };
 
   return (
@@ -78,6 +99,8 @@ const ModalEdit = ({
           label="Category"
           type="text"
           fullWidth
+          error={!!errors.category}
+          helperText={errors.category}
           value={formData.category}
           onChange={handleChange}
         />
@@ -87,6 +110,8 @@ const ModalEdit = ({
           label="Name"
           type="text"
           fullWidth
+          error={!!errors.name}
+          helperText={errors.name}
           value={formData.name}
           onChange={handleChange}
         />
@@ -96,6 +121,8 @@ const ModalEdit = ({
           label="Quantity"
           type="number"
           fullWidth
+          error={!!errors.quantity}
+          helperText={errors.quantity}
           value={formData.quantity}
           onChange={handleChange}
         />
@@ -105,6 +132,8 @@ const ModalEdit = ({
           label="Price"
           type="number"
           fullWidth
+          error={!!errors.price}
+          helperText={errors.price}
           value={formData.price}
           onChange={handleChange}
         />
